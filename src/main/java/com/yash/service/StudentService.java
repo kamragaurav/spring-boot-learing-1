@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 @Service
 public class StudentService {
@@ -29,6 +30,12 @@ public class StudentService {
 
     public void updateStudent(Student stdent) {
         int id =stdent.getId();
-        students.set(stdent.getId(),students.stream().filter(student->student.getId()==id).findFirst().get());
+        int bound = students.size();
+        for (int i = 0; i < bound; i++) {
+            Student student = students.get(i);
+            if (stdent.getId() == student.getId()) {
+                students.set(i, stdent);
+            }
+        }
     }
 }

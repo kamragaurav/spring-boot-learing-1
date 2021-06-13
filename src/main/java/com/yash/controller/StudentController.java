@@ -35,6 +35,7 @@ public class StudentController {
         studentService.removeStudent(id);
     }
 
+    @PutMapping(value = "/students")
     public void updateStudent(@RequestBody Student student){
         studentService.updateStudent(student);
     }
