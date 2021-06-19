@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -22,7 +23,7 @@ public class StudentController {
 
     @GetMapping(value = "/students/{studentId}")
     public Student getStudent(@PathVariable("studentId") int  id){
-        return studentService.getStudent(id);
+        return studentService.getStudent(id).get();
     }
 
     @PostMapping(value = "/students")
